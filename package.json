@@ -1,18 +1,37 @@
-{ "name" : "iptrie"
-, "description" : "IP tries (prefix tree)"
-, "keywords" : [ "iptrie", "blocklist", "IP", "acl" ]
-, "version" : "0.0.7"
-, "author" : { "name" : "Theo Schlossnagle" }
-, "directories": { "lib": "." }
-, "repository" :
-  { "type" : "git"
-  , "url" : "git://github.com/postwait/node-iptrie.git"
+{
+  "name": "iptrie",
+  "description": "IP tries (prefix tree)",
+  "keywords": [
+    "iptrie",
+    "blocklist",
+    "IP",
+    "acl"
+  ],
+  "version": "0.0.7",
+  "author": {
+    "name": "Theo Schlossnagle"
+  },
+  "directories": {
+    "lib": "."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/postwait/node-iptrie.git"
+  },
+  "bugs": {
+    "url": "http://github.com/postwait/node-iptrie/issues"
+  },
+  "main": "iptrie",
+  "engines": {
+    "node": ">= 4.2.0"
+  },
+  "licenses": [
+    {
+      "type": "BSD"
+    }
+  ],
+  "dependencies": {
+    "nan": "^2.14.0",
+    "node-gyp": "^5.0.3"
   }
-, "bugs" :
-  { "url" : "http://github.com/postwait/node-iptrie/issues"
-  }
-, "main" : "iptrie"
-, "engines" : { "node" : ">= 4.2.0" }
-, "licenses" :
-  [ { "type" : "BSD" } ]
 }

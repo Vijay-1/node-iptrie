@@ -36,7 +36,7 @@
 #include <node.h>
 #include <node_object_wrap.h>
 #include <assert.h>
-
+#include <nan.h>
 using namespace v8;
 using namespace node;
 
@@ -177,8 +177,8 @@ class IPTrie : public ObjectWrap {
         return;
       }
 
-      String::Utf8Value ipaddress(args[0]->ToString());
-      int prefix_len = args[1]->ToUint32()->Value();
+      String::Utf8Value ipaddress(isolate, args[0]->ToString());
+      int prefix_len = args[1]->ToUint32(Nan::GetCurrentContext()).ToLocalChecked()->Value(); 
 
       IPTrie *iptrie = ObjectWrap::Unwrap<IPTrie>(args.This());
       Handle<Value> data = args[2];
@@ -206,8 +206,9 @@ class IPTrie : public ObjectWrap {
         return;
       }
 
-      String::Utf8Value ipaddress(args[0]->ToString());
-      int prefix_len = args[1]->ToUint32()->Value();
+      String::Utf8Value ipaddress(isolate, args[0]->ToString());
+      int prefix_len = args[1]->ToUint32(Nan::GetCurrentContext()).ToLocalChecked()->Value(); 
+
 
       IPTrie *iptrie = ObjectWrap::Unwrap<IPTrie>(args.This());
       int success = iptrie->Del(*ipaddress, prefix_len);
@@ -225,7 +226,7 @@ class IPTrie : public ObjectWrap {
         return;
       }
 
-      String::Utf8Value ipaddress(args[0]->ToString());
+      String::Utf8Value ipaddress(isolate, args[0]->ToString());
 
       IPTrie *iptrie = ObjectWrap::Unwrap<IPTrie>(args.This());
       obj_baton_t *d = iptrie->Find(*ipaddress);
